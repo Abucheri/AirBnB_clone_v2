@@ -41,7 +41,7 @@ class BaseModel:
 
     def __str__(self):
         """Returns a string representation of the instance"""
-        cls = (str(type(self)).split('.')[-1]).split('\'')[0]
+        cls = type(self).__name__
         return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
 
     def save(self):
@@ -53,7 +53,7 @@ class BaseModel:
     def to_dict(self):
         """Convert instance into dict format"""
         dictionary = self.__dict__.copy()
-        dictionary['__class__'] = type(self).__name__
+        dictionary['__class__'] = str(type(self).__name__)
         if hasattr(self, 'created_at'):
             dictionary['created_at'] = self.created_at.isoformat()
         if hasattr(self, 'updated_at'):
