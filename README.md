@@ -355,6 +355,8 @@ $
 6. DBStorage - States and Cities
 	- SQLAlchemy will be your best friend!
 	- It’s time to change your storage engine and use `SQLAlchemy`
+	![table_relationships](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/01976a94-cf8a-4099-8637-52b4191d7b92)
+
 	- In the following steps, you will make multiple changes:
 		- the biggest one is the transition between `FileStorage` and `DBStorage`: In the industry, you will never find a system who can work with both in the same time - but you will find a lot of services who can manage multiple storage systems. (for example, logs service: in memory, in disk, in database, in ElasticSearch etc…) - The main concept behind is the ___abstraction___: Make your code running without knowing how it’s stored.
 		- add attributes for SQLAlchemy: they will be class attributes, like previously, with a “weird” value. Don’t worry, these values are for description and mapping to the database. If you change one of these values, or add/remove one attribute of the a model, you will have to delete the database and recreate it in SQL. (Yes it’s not optimal, but for development purposes, it’s ok. In production, we will add “migration mechanism” - for the moment, don’t spend time on it.)
