@@ -232,7 +232,7 @@ class HBNBCommand(cmd.Cmd):
         print_list = []
 
         if args:
-            args = args.split(' ')[0]  # remove possible trailing args
+            args = args.split(' ')[0]
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
@@ -241,15 +241,15 @@ class HBNBCommand(cmd.Cmd):
                     print_list.append(str(v))
         else:
             for k, v in storage._FileStorage__objects.items():
-                # print_list.append(str(v))
-                print_list.append(v.__str__())
-
-        result = ', '.join(print_list)
-        result = '[' + result + ']'
-
-        result = result.replace('\"[', '[').replace('\"', '')
-
-        print(result)
+                print_list.append(str(v))
+        # print(print_list)
+        my_list = []
+        for obj_str in print_list:
+            # print(obj_str)
+            if '"' in obj_str:
+                obj_str = obj_str.replace('"', '')
+            my_list.append(obj_str)
+        print(my_list)
 
     def help_all(self):
         """ Help information for the all command """
