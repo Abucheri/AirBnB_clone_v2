@@ -1,0 +1,28 @@
+# file storage
+file.json
+
+# ideas
+.idea
+
+# code
+.vscode
+*.code-workspace
+
+# __pycache__
+__pycache__
+
+# emacs
+*~
+
+# versions
+versions/
+
+# pycs
+*.pyc
+
+# ENV vars setter script
+set_env_variables
+
+# extra .sql
+setup_mysql_dev_0.sql
+setup_mysql_test_0.sql
