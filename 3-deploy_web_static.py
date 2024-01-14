@@ -7,6 +7,7 @@ from fabric.api import env, run, put, local, execute
 from datetime import datetime
 import os.path
 from functools import lru_cache
+from os.path import getsize
 
 env.hosts = ['54.210.107.201', '54.237.76.82']
 env.user = 'ubuntu'
@@ -30,8 +31,11 @@ def do_pack():
     if os.path.isdir("versions") is False:
         if local("mkdir -p versions").failed is True:
             return None
+    print("Packing web_static to {}".format(file_path))
     if local("tar -cvzf {} web_static".format(file_path)).failed is True:
         return None
+    file_size = getsize(file_path)
+    print("web_static packed: {} -> {}Bytes".format(file_path, file_size))
     return file_path
 
 
@@ -96,4 +100,6 @@ def deploy():
     file_path = do_pack()
     if file_path is None:
         return False
-    return do_deploy(file_path)
+    if do_deploy(file_path):
+        print("New version deployed!")
+    return True
