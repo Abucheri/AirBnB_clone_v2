@@ -6,11 +6,13 @@ Fabric script to create and distribute an archive to web servers.
 from fabric.api import env, run, put, local, execute
 from datetime import datetime
 import os.path
+from functools import lru_cache
 
 env.hosts = ['54.210.107.201', '54.237.76.82']
 env.user = 'ubuntu'
 
 
+@lru_cache(maxsize=None)
 def do_pack():
     """
     Generates a .tgz archive from the contents of the web_static folder.
