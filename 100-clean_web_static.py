@@ -3,8 +3,8 @@
 Fabric script to clean up old archives.
 """
 
-from fabric.api import env, local, run
-from pathlib import Path
+from fabric.api import *
+import os
 
 
 env.hosts = ['54.210.107.201', '54.237.76.82']
@@ -21,33 +21,14 @@ def do_clean(number=0):
                       If 2, keep the most recent and second most recent
                         versions, and so on.
     """
-    try:
-        number = int(number)
-    except ValueError:
-        print("Error: 'number' must be an integer.")
-        return
+    number = 1 if int(number) == 0 else int(number)
 
-    if number < 0:
-        print("Error: 'number' must be a non-negative integer.")
-        return
-
-    # Local cleanup
-    local("ls -1t versions | tail -n +{} | xargs -I {{}} rm versions/{{}}"
-          .format(number + 1))
-
-    # Remote cleanup
-    releases_path = "/data/web_static/releases"
-    releases = run("ls -1t {} | tail -n +{}"
-                   .format(releases_path, number + 1)).split('\n')
-
-    for release in releases:
-        run("rm -rf {}/{}".format(releases_path, release))
-
-    # Remove dangling symlink
-    current_path = "/data/web_static/current"
-    current_release = run("readlink {} | xargs -I {{}} basename {{}}"
-                          .format(current_path), quiet=True)
-
-    if current_release not in run("ls -1 {}"
-                                  .format(releases_path), quiet=True):
-        run("rm -rf {}".format(current_path))
+    archives = sorted(os.listdir("versions"))
+    [archives.pop() for i in range(number)]
+    with lcd("versions"):
+        [local("rm ./{}".format(a)) for a in archives]
+    with cd("/data/web_static/releases"):
+        archives = run("ls -tr").split()
+        archives = [a for a in archives if "web_static_" in a]
+        [archives.pop() for i in range(number)]
+        [run("rm -rf ./{}".format(a)) for a in archives]
