@@ -817,6 +817,9 @@ In this first deployment project, you will be deploying your `web_static` work. 
 
 Before starting, please fork the repository `AirBnB_clone_v2` from your partner if you don’t have it
 
+![aribnb_diagram_0](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/5e4e6385-11a7-42ac-bbd4-d3a6799a9bb0)
+
+
 ## More Info
 ### Install Fabric for Python 3 - version 1.14.post1
 ```
