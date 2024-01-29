@@ -4,7 +4,7 @@
 
 from os import getenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from models.base_model import BaseModel, Base
 from models.user import User
 from models.state import State
@@ -12,16 +12,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
-
-classes = {
-        'User': User,
-        'State': State,
-        'City': City,
-        'Amenity': Amenity,
-        'Place': Place,
-        'Review': Review
-}
 
 
 class DBStorage:
@@ -44,18 +34,19 @@ class DBStorage:
 
     def all(self, cls=None):
         """Query on the current database session"""
-        objects = {}
-        if cls:
-            query = self.__session.query(classes[cls])
-            for obj in query.all():
-                key = "{}.{}".format(cls, obj.id)
-                objects[key] = obj
+        if cls is None:
+            obj_data = self.__session.query(State).all()
+            obj_data.extend(self.__session.query(City).all())
+            obj_data.extend(self.__session.query(User).all())
+            obj_data.extend(self.__session.query(Place).all())
+            obj_data.extend(self.__session.query(Review).all())
+            obj_data.extend(self.__session.query(Amenity).all())
         else:
-            for key, cls in classes.items():
-                query = self.__session.query(cls)
-                for obj in query.all():
-                    objects["{}.{}".format(cls.__name__, obj.id)] = obj
-        return objects
+            if isinstance(str, cls):
+                cls = eval(cls)
+            obj_data = self.__session.query(cls)
+        return ({"{}.{}".format(type(obj).__name__, obj.id): obj for obj
+                in obj_data})
 
     def new(self, obj):
         """Add the object to the current database session"""
@@ -73,5 +64,12 @@ class DBStorage:
     def reload(self):
         """Create all tables in the database"""
         Base.metadata.create_all(self.__engine)
-        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(Session)
+        SessionM = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(SessionM)
+        self.__session = Session()
+
+    def close(self):
+        """Call close() method on the private session
+        attribute (self.__session)
+        """
+        self.__session.close()
