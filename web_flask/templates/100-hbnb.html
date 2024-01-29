@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+
+        <H1>HBNB</H1>
+        <UL>
+            <H2 class="popover-title">States</H2>
+            <DIV class="popover-content">
+                {% for state in states %}
+                    <LABEL class="checkbox">
+                        <INPUT type="checkbox" name="{{ state.id }}">
+                        {{ state.name }}
+                    </LABEL>
+                    <BR>
+                {% endfor %}
+            </DIV>
+
+            <H2 class="popover-title">Cities</H2>
+            <DIV class="popover-content">
+                {% for city in cities %}
+                    <LABEL class="checkbox">
+                        <INPUT type="checkbox" name="{{ city.id }}">
+                        {{ city.name }}
+                    </LABEL>
+                    <BR>
+                {% endfor %}
+            </DIV>
+
+            <H2 class="popover-title">Amenities</H2>
+            <DIV class="popover-content">
+                {% for amenity in amenities %}
+                    <LABEL class="checkbox">
+                        <INPUT type="checkbox" name="{{ amenity.id }}">
+                        {{ amenity.name }}
+                    </LABEL>
+                    <BR>
+                {% endfor %}
+            </DIV>
+
+            <H2 class="popover-title">Places</H2>
+            <DIV class="popover-content">
+                {% for place in places %}
+                    <DIV class="place">
+                        <H3>{{ place.name }}</H3>
+                        <P>{{ place.description }}</P>
+                        <P>Price by night: ${{ place.price_by_night }}</P>
+                    </DIV>
+                {% endfor %}
+            </DIV>
+        </UL>
+
+    </BODY>
+</HTML>
