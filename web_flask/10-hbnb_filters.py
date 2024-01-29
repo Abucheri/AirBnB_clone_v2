@@ -22,7 +22,10 @@ def hbnb_filters():
     """Display a HTML page similar to 6-index.html,
     with additional filters.
     """
-
+    states = storage.all("State")
+    amenities = storage.all("Amenity")
+    return render_template("10-hbnb_filters.html",
+                           states=states, amenities=amenities)
 
 
 if __name__ == '__main__':
