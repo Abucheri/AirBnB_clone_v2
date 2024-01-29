@@ -22,6 +22,11 @@ def close_session(exception):
 def hbnb():
     """Display a HTML page similar to 8-index.html with
     additional filters."""
+    states = storage.all("State")
+    amenities = storage.all("Amenity")
+    places = storage.all("Place")
+    return render_template("100-hbnb.html",
+                           states=states, amenities=amenities, places=places)
 
 
 if __name__ == '__main__':
