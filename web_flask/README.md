@@ -7,6 +7,9 @@
 $ pip3 install Flask
 ```
 
+![hbnb_step3](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/73e449ef-b3b7-4bb2-b312-f5acaa72acf7)
+
+
 0. Hello Flask!
 	- Write a script that starts a Flask web application:
 		- Your web application must be listening on `0.0.0.0`, port `5000`
@@ -572,6 +575,9 @@ $ pip3 install Flask
 	guillaume@ubuntu:~$ 
 	```
 
+  	![9a7ae8155274b17881442200437e8793cf08de48](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/1ebeb8d5-b3f7-4124-b51a-c1629be08e33)
+
+
 10. States and State
 	- Write a script that starts a Flask web application:
 		- Your web application must be listening on `0.0.0.0`, port `5000`
@@ -723,6 +729,21 @@ $ pip3 install Flask
 	```
 	- In the browser:
 
+ 	![9a7ae8155274b17881442200437e8793cf08de48_1](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/c5c7618f-fb89-407a-8f55-c86333cef99c)
+
+
+ 	![1549b553d726cc37f64440be910cb6b858aa32ae](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/164c31b0-f887-47d5-b2b4-230790bf32d9)
+
+
+  	![94b3a416ba1551c59701eb6672ac0a36fbebba14](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/6b8882ea-dbba-48a7-9d5b-64546cad7672)
+
+
+  	![1e559707dd34a37564dc10e54b707815a516d363](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/00d75828-6b7e-4228-8b81-5e7204b0ad0e)
+
+
+
+
+
 12. HBNB is alive!
 	- Write a script that starts a Flask web application:
 		- Your web application must be listening on `0.0.0.0`, port `5000`
@@ -757,3 +778,17 @@ $ pip3 install Flask
 	....
 	```
 	- In the browser:
+
+ 	![396ae10c9f85a6128ae40e1b63f4bce95adf411c](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/01519955-633e-4927-81c2-ca043978f548)
+
+
+  	![9eb21499b5f3b59751fdbf561174e2f259d97482](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/483ca647-09f0-4d92-87bd-08307fda0447)
+
+
+  	![bf248a63c15a746ad694acffdd56d80281782c71](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/8fbce0f3-3951-4e9e-87c4-a18e63003215)
+
+
+  	![494317aad058a649a51f416eceee1a609f07c6c0](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/eaef75b3-17d3-4a60-8d0e-2dd4c76e9b46)
+
+
+  	![016911388aa92532e06c4d5361188a2622425517](https://github.com/Abucheri/AirBnB_clone_v2/assets/24778489/5d04dc9d-7429-4951-9120-cd59cf527774)
